@@ -20,10 +20,11 @@
 
 // empty array of squares, and push square elements into it.
 
-document.addEventListener('DOMContentLoadeded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     const grid = document.querySelector('.grid')
     let width = 10
     let squares = []
+    let bombAmount = 20
 
     // Create Board Function
         // --> createElement method = creates a new html element representing each square (100 squares) --> This creates 100 divs
@@ -32,6 +33,20 @@ document.addEventListener('DOMContentLoadeded', () => {
         // push each square element into to the empty squares array.
         // invoke the function once finished defining it.
     function createBoard() {
+        // get shuffled game array with random bombs
+            // Array method crates an array called bombAmount by passing in  the bombAmounts =20 variable, and then uses .fill() to change all the element's to "bomb" at each index.
+            // empty array is doing the same thing except giving it a length of 80, and filling each square up with "valid".
+            // then create a gameArray where we add the 2 arrays together using concat.
+        const bombArray =  Array(bombAmount).fill('bomb')
+        const emptyArray = Array(width*width - bombAmount).fill('valid') 
+        console.log(bombArray)
+        console.log(emptyArray)
+        const gameArray = emptyArray.concat(bombArray)
+        console.log(gameArray)
+        const shuffledArray = gameArray.sort(() => Math.random() -0.5)
+        console.log(shuffledArray)
+
+
         for(let i = 0; i < width * width; i++) {
             const square = document.createElement('div')
             square.setAttribute('id', i)
@@ -42,4 +57,10 @@ document.addEventListener('DOMContentLoadeded', () => {
     createBoard()
 
 
+
 })
+
+
+
+// TIPS/ERRORS MADE:
+    // --> in "DOMContentLoaded", I wrote "DOMContentLoadeded" and the extra 'ed' at the end didn't allow this method to work, not allowing my js to run, or html to fully load.
