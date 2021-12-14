@@ -1,0 +1,17 @@
+/* grid class styling, 40 x 10px height dimensions */
+/* display: flex -- so squares appear in-line */
+/* flex-wrap -- so divs wrap around eachother like a snake. */
+.grid {
+  height: 400px;
+  width: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: grey;
+}
+
+/* styling any div that goes inside our grid, div with class of grid */
+/* saying only want to style divs inside our grid div.  */
+.grid div {
+  height: 40px;
+  width: 40px;
+}
