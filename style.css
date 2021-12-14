@@ -15,3 +15,13 @@
   height: 40px;
   width: 40px;
 }
+
+/* selecting all the squarees in the shuffledArray with className of 'bomb' */
+.bomb {
+  background-color: orange;
+}
+
+/* testing how the .classList.add line works by giving the valid squares a color of blue */
+.valid {
+  background-color: blue;
+}

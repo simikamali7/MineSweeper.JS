@@ -37,22 +37,34 @@ document.addEventListener('DOMContentLoaded', () => {
             // Array method crates an array called bombAmount by passing in  the bombAmounts =20 variable, and then uses .fill() to change all the element's to "bomb" at each index.
             // empty array is doing the same thing except giving it a length of 80, and filling each square up with "valid".
             // then create a gameArray where we add the 2 arrays together using concat.
+            // .sort sorts array by passing in an arrow function that performs the Math.random method on the array items.
         const bombArray =  Array(bombAmount).fill('bomb')
         const emptyArray = Array(width*width - bombAmount).fill('valid') 
-        console.log(bombArray)
-        console.log(emptyArray)
         const gameArray = emptyArray.concat(bombArray)
-        console.log(gameArray)
         const shuffledArray = gameArray.sort(() => Math.random() -0.5)
-        console.log(shuffledArray)
+       
 
-
+// giving a className to square, by using .classList.add()
         for(let i = 0; i < width * width; i++) {
             const square = document.createElement('div')
             square.setAttribute('id', i)
+            square.classList.add(shuffledArray[i])
             grid.appendChild(square)
             squares.push(square)
         }
+
+
+        // Adding the adjacent-bombs number feature --> display a number for each valid square, that indicates to user how many bombs are there in surrunding squares.
+        // Edge Cases: game must know that if a square is on the edge of the grid, don't check for squaures that don't exist, if its the last one in that direction.
+        // width = 10, eg: if i = 10 --> 10 % 10 gives remainder of 0.
+        // isRightEdge --> divides i by width and if the remaineder is 9 b/c all the right edge column squares end with digit 9, then its a rightEdge sqaure.\
+            // eg: 19 % width *10* = 10  with a remainder of 9, and width - 1 = 9, therefore it is a rightedge square.
+        for (let i = 0; i <squares.length; i++) {
+            const isLeftEdge = (i % width === 0)
+            const isRightEdge = (i % width === width - 1)
+
+        }
+        
     }
     createBoard()
 
